@@ -11,9 +11,7 @@ class OutputView extends StatefulWidget {
 }
 
 class _OutputViewState extends State<OutputView> {
-
-
- List<Student>? lstStudents;
+   List<Student>? lstStudents;
   @override
   void didChangeDependencies() {
     lstStudents = ModalRoute.of(context)!.settings.arguments as List<Student>;
@@ -27,45 +25,19 @@ class _OutputViewState extends State<OutputView> {
         title: const Text("Home"),
       ),
 
-       body:  ListView.separated(
+      body:  ListView.separated(
         separatorBuilder: (BuildContext context, int index) => const Divider(),
         itemCount: lstStudents!.length,
         itemBuilder: (context, index){
-          var fname = lstStudents![index].fname;
-          var lname = lstStudents![index].lname;
+          var studentId = studentId![index].studentId;
+          var dueAmount = dueAmount![index].lname;
           return  ListTile(
-         leading: const CircleAvatar(
-          
-          
-          
-         ),
-          title: Text(fname!),
-          subtitle: Text(lname!),
-          trailing: Wrap(
-            children:  [
-              IconButton(
-                onPressed: () {
-                setState(() {
-                    lstStudents!.removeAt(index);
-                });
-                },
-                icon: const Icon(Icons.delete),
-
-              ),
-              IconButton(
-                onPressed: () {
-                  
-                },
-                icon: const Icon(Icons.edit),
-
-              ),
-              
-            ]),
-
+        
+          title: Text(studentId!),
+          subtitle: Text(dueAmount!),
           );
         },
       ),
-
     );
   }
 }
